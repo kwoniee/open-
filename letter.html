@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Letter</title>
+  <style>
+    body {
+      background: url('https://tse1.explicit.bing.net/th/id/OIP.W0O2IN_h5yaTLvSN2W8D-QHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    /* Responsive adjustments */
+@media (max-width: 600px) {
+  .paper-container {
+    max-width: 98vw;
+    padding: 24px 4vw 24px 4vw;
+    margin: 24px 0;
+    border-radius: 14px;
+  }
+  .birthday-message h1 {
+    font-size: 1.5em;
+  }
+  .birthday-message .date {
+    font-size: 1em;
+  }
+  iframe {
+    width: 90vw !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .next-button {
+    font-size: 1em;
+    padding: 8px 18px;
+  }
+}
+    .pink-modal {
+      background: #fff0f6 !important;
+      border: 2px solid #fa6dc4 !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 24px rgba(218, 25, 148, 0.10);
+      max-width: 750px;
+      width: 98vw;
+      margin: 30px auto;
+      padding: 60px 40px 56px 40px;
+      position: relative;
+      text-align: center;
+    }
+    .pink-input {
+      padding: 12px 18px;
+      border: 2px solid #fa6dc4;
+      border-radius: 10px;
+      font-size: 1.3em;
+      font-family: 'Georgia', serif;
+      outline: none;
+      background: #fff;
+      color: #d21994;
+      width: 250px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .pink-input:focus {
+      border-color: #d21994;
+    }
+    .pin-landscape-img {
+      width: 350px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #d21994;
+      box-shadow: 0 2px 8px rgba(218, 25, 148, 0.10);
+    }
+    #pinError {
+      color: #d32f2f;
+      margin-top: 10px;
+      font-size: 1em;
+      display: none;
+    }
+    .letter-paper {
+  position: relative;
+  overflow: hidden;
+  border: 2px dashed #fa6dc4 !important;
+  color: #d21994 !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(33,150,243,0.12), 0 1px 4px rgba(33,150,243,0.08);
+  padding: 40px 32px 40px 32px;
+  max-width: 1000px;
+  width: 100%;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  animation: fadeIn 1s;
+  margin: 30px auto;
+  min-height: 80vh;
+  background: transparent !important;
+  display: block;
+}
+
+.letter-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(rgba(250,109,196,0.35), rgba(250,109,196,0.35)),
+    url('them.jpg') center center/cover no-repeat;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.letter-paper > * {
+  position: relative;
+  z-index: 1;
+}
+    .letter-paper p {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 15px;
+      color: #ffffff;
+      line-height: 1.7;
+      margin-bottom: 5px;
+      text-align: left;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    .letter-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 18px;
+      color: #d21957;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .letter-sign {
+      margin-top: 32px;
+      text-align: right;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2em;
+      color: #ffffff;
+      text-shadow: 2px 2px 5px rgba(5, 4, 4, 0.3);
+    }
+     .envelope {
+      width: 340px;
+      height: 220px;
+      position: relative;
+      margin: 0 auto;
+      perspective: 800px;
+    }
+    .envelope-flap {
+      width: 340px;
+      height: 110px;
+      background: #fa6dc4;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 0 0 180px 180px/0 0 110px 110px;
+      transform-origin: top center;
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(218, 25, 148, 0.10);
+      transition: transform 0.8s cubic-bezier(.77,0,.18,1);
+    }
+    .envelope-front {
+      width: 340px;
+      height: 110px;
+      background: #fff;
+      position: absolute;
+      top: 110px;
+      left: 0;
+      border-radius: 0 0 24px 24px;
+      z-index: 2;
+      border: 2px solid #fa6dc4;
+      box-shadow: 0 4px 24px rgba(218, 25, 148, 0.10);
+    }
+    .envelope-letter {
+      width: 300px;
+      height: 140px;
+      background: #fff0f6;
+      position: absolute;
+      top: 40px;
+      left: 20px;
+      border-radius: 12px;
+      z-index: 1;
+      border: 2px dashed #fa6dc4;
+      box-shadow: 0 2px 8px rgba(218, 25, 148, 0.10);
+    }
+    .next-button {
+      display: block;
+      margin: 32px auto 0;
+      padding: 10px 24px;
+      background: #fa6dc4;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+      transition: background 0.3s;
+      font-family: 'Georgia', serif;
+      border: 2px solid #d21994;
+    }
+    .next-button:hover {
+      background: #d21994;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Password Modal Only -->
+  <div id="pinModal" class="pin-modal" style="display:flex;">
+    <div class="pin-content pink-modal">
+      <span class="pin-label" style="
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.2em;
+        color: #d21994;
+        letter-spacing: 2px;
+        text-shadow: 1px 2px 8px #fff, 0 1px 0 #fff;
+        margin-bottom: 10px;
+        display: block;
+      ">
+        Password
+      </span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:24px;">
+        <input id="pinInput" type="password" maxlength="4" placeholder="birth month and day" class="pink-input" autocomplete="off" />
+        <img src="2.jpg" alt="pretty" class="pin-landscape-img">
+      </div>
+      <button id="pinEnter" class="next-button" style="margin-top:24px;">Unlock</button>
+      <div id="pinError">Incorrect password. Try again.</div>
+    </div>
+  </div>
+ <!-- Envelope Animation -->
+  <div id="envelopeContainer" style="display:none; justify-content:center; align-items:center; height:100vh; position:fixed; top:0; left:0; width:100vw; background:rgba(255,240,246,0.92); z-index:10;">
+    <div class="envelope">
+      <div class="envelope-flap" id="flap"></div>
+      <div class="envelope-front"></div>
+      <div class="envelope-letter"></div>
+    </div>
+  </div>
+
+  <!-- Letter Content -->
+  <div class="letter-paper" id="letter" style="display:none;">
+    <div class="letter-title">To My Everything,</div>
+     <img src="omsem.jpg" alt="us" style="
+    display:block;
+    margin: 0 auto 18px auto;
+    max-width: 350px;
+    border-radius: 16px;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  ">
+  <p>
+    Hello baby, sorry if eto lang yung na offer ko sa'yo this gf's day. I hope this message reminds you how much you mean to me. 
+    Even hindi gf's day mahal kita sa kada segundo, minuto, at araw-araw na lumipas.
+  </p>
+    <p>
+      Thankyou for being my everything, alam mo naman na sobrang swerte ko sa'yo. Thankyou rin for loving me unconditionally. 
+      You're the best thing na dumating sa buhay ko and I know nothing can take your place in my heart. 
+      Na-aappreciate ko lahat ng efforts na ginagawa mo sakin, kahit na sinasabi mo na maliit.
+      Maliit man or malaki super kong ni ccherish yung lahat ng ginagawa mo for me, and for us. 
+      You are the answer to my prayers, the girl I've always dream of. Every moment na magkasama tayo sobrang saya ko kasi by just being with 
+      you nawawala lahat ng pagod ko. May times na hindi tayo nagkakasundo sa mga bagay, and still nagagawa natin ayusin agad-agad. 
+      Sobrang proud ako sa mga achievements mo and ma aachieve mo pa lang.
+    </p>
+    <p>
+      I will always be your number 1 fan and supporter sa buong buhay mo, baby!! 
+      we don't know what future holds pero in my eyes, sa'yo ko lang talaga nakikita yung future ko. I will always forever grateful na naging part ako sa buhay mo. 
+      I will forever cherish this moments, and I will love you till my last breath. Hays ganda mo talaga always in all ways 😩.
+    </p>
+ <p>
+  Again Happy girlfriend's day, my iska 💗!!
+    </p>
+    <div class="letter-sign">Yours Truly,<br>Your Always</div>
+ <script>
+    const correctPin = "1216";
+    const pinModal = document.getElementById('pinModal');
+    const envelopeContainer = document.getElementById('envelopeContainer');
+    const letter = document.getElementById('letter');
+    const flap = document.getElementById('flap');
+
+    document.getElementById('pinEnter').onclick = function() {
+      const pinInput = document.getElementById('pinInput').value;
+      if(pinInput === correctPin) {
+        pinModal.style.display = 'none';
+        envelopeContainer.style.display = 'flex';
+        setTimeout(() => {
+          flap.style.transform = 'rotateX(120deg)';
+        }, 500);
+        setTimeout(() => {
+          envelopeContainer.style.display = 'none';
+          letter.style.display = 'block';
+        }, 1800);
+      } else {
+        document.getElementById('pinError').style.display = "block";
+        document.getElementById('pinInput').value = "";
+      }
+    };
+    document.getElementById('pinInput').onkeydown = function(e) {
+      if (e.key === "Enter") {
+        document.getElementById('pinEnter').click();
+      }
+      document.getElementById('pinError').style.display = "none";
+    };
+  </script>
+</body>
+</html>
